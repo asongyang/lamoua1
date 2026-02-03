@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navbar Responsive</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #ffffff;
+        }
+
+        /* ------------------- Navbar Desktop + Mobile ------------------- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: white;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #0066ff;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.05rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #0066ff;
+        }
+
+        /* ปุ่ม Login / สมัคร */
+        .auth-btn {
+            padding: 10px 20px;
+            border-radius: 2px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+
+        .login-btn {
+            background: transparent;
+            border: 2px solid #0066ff;
+            color: #0066ff;
+        }
+
+        .signup-btn {
+            background: #0066ff;
+            border: none;
+            color: white;
+        }
+
+        .auth-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 102, 255, 0.2);
+        }
+
+        /* Mobile Menu Button */
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #333;
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: white;
+            transform: translateY(-100%);
+            transition: transform 0.35s ease-in-out;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            padding: 40px 24px;
+        }
+
+        .mobile-menu.active {
+            transform: translateY(0);
+        }
+
+        .mobile-menu a {
+            display: block;
+            color: #333;
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-weight: 500;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .mobile-menu .auth-btn {
+            margin-top: 30px;
+            width: 100%;
+            text-align: center;
+            font-size: 1.1rem;
+            padding: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .navbar .auth-btn.login-btn {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            /* background: #ffffff; */
+            padding: 5px;
+            padding-top: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+            /* box-shadow: 0 2px 8px rgba(0, 0, 0, .1); */
+            display: flex;
+            flex-direction: column;
+            min-height: calc(100vh - 70px);
+        }
+
+        .container-content {
+            flex: 1;
+            max-width: 600px;
+            margin: auto;
+            width: 100%;
+            padding: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #333;
+            margin-top: 80px;
+        }
+
+        /* เพิ่มใน <style> */
+        .weight-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+
+        }
+
+        #weight {
+            width: 100%;
+            padding: 10px 90px 10px 10px;
+            /* เว้นขวาให้ปุ่ม */
+            font-size: 16px;
+            border: 2px solid #0b54ca;
+            /* เปลี่ยนเป็น 2px solid เพื่อความชัดเจน */
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        #weight:focus {
+            outline: none;
+            border-color: #0b54ca;
+            box-shadow: 0 0 0 3px rgba(11, 84, 202, 0.2);
+        }
+
+        .btn-inside {
+            position: absolute;
+            right: 3px;
+            /* ห่างจากขอบขวา 4px */
+            top: 50%;
+            transform: translateY(-50%);
+            background: #0b54ca;
+            color: #fff;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 2px;
+            cursor: pointer;
+            font-size: 14px;
+            /* height: 100%; */
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #0b54ca;
+            border-radius: 4px;
+        }
+
+        .btn-green {
+            background: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .btn-purple {
+            background: #28a745;
+            color: #fff;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 480px) {
+            .btn-purple {
+                padding: 10px;
+                font-size: 14px;
+                margin-top: 8px;
+            }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background: #f0f0f0;
+        }
+
+        .c-name {
+            margin-bottom: 15px;
+            width: 100%;
+            border: 2px solid #0b54ca;
+            /* เพิ่ม 2px solid เพื่อความชัดเจน */
+            border-radius: 4px;
+            padding: 10px;
+            font-size: 16px;
+            transition: all 0.2s;
+        }
+
+        .c-name:focus {
+            outline: none;
+            border-color: #0b54ca;
+            box-shadow: 0 0 0 3px rgba(11, 84, 202, 0.2);
+        }
+
+        .btn-delete {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-delete:hover {
+            background: #c82333;
+        }
+
+        /* ───────────── Modal Styling ───────────── */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.55);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+        }
+
+        .modal-card {
+            background: white;
+            width: 100%;
+            max-height: 400px;
+            max-width: 700px;
+            border-radius: 2px;
+            padding: 45px 35px;
+            /* box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.1); */
+            text-align: center;
+            position: relative;
+            transform: scale(0.92) translateY(20px);
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 28px;
+            color: #666;
+            cursor: pointer;
+            line-height: 1;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+        }
+
+        /* ───────────── Customer Input Styling ───────────── */
+        .customer-input-group {
+            margin: 25px 0 35px;
+        }
+
+        .customer-input-field {
+            width: 100%;
+            padding: 16px 20px;
+            font-size: 1.1rem;
+            border: 2px solid #0066ff;
+            border-radius: 6px;
+            background: #fff;
+            color: #333;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+        }
+
+        .customer-input-field:focus {
+            outline: none;
+            border-color: #0b54ca;
+            box-shadow: 0 0 0 3px rgba(11, 84, 202, 0.2);
+        }
+
+        .customer-input-field::placeholder {
+            color: #999;
+            font-weight: 400;
+        }
+
+        /* Responsive for mobile */
+        @media (max-width: 480px) {
+            .customer-input-group {
+                margin: 20px 0 30px;
+            }
+            
+            .customer-input-field {
+                padding: 14px 18px;
+                font-size: 1rem;
+            }
+        }
+
+        .modal-title {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            margin-top: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .modal-desc {
+            color: #555;
+            font-weight: 500;
+            margin-bottom: 40px;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .btn-modal-save {
+            background: linear-gradient(135deg, #0070c0 0%, #0055a3 100%);
+            color: white;
+            border: none;
+            padding: 13px 28px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            flex: 1;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 15px rgba(0, 112, 192, 0.25);
+        }
+
+        .btn-modal-details {
+            background: white;
+            color: #1a365d;
+            border: 2px solid #1a365d;
+            padding: 13px 28px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            flex: 1;
+            transition: all 0.25s ease;
+            background: #f8fafc;
+        }
+
+        .btn-modal-save:hover {
+            background: linear-gradient(135deg, #0055a3 0%, #003f7a 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 112, 192, 0.35);
+        }
+
+        .btn-modal-details:hover {
+            background: white;
+            border-color: #0070c0;
+            color: #0070c0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(26, 54, 93, 0.15);
+        }
+
+        /* ───────────── Details Modal Styling ───────────── */
+        .details-modal {
+            display: none;
+        }
+
+        .details-content {
+            width: 90%;
+            max-width: 700px;
+            background: white;
+            border-radius: 2px;
+            padding: 40px 35px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transform: scale(0.92) translateY(20px);
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-overlay.active .details-content {
+            transform: scale(1) translateY(0);
+        }
+
+        .details-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .details-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        .details-subtitle {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        .details-info {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 2px dashed #ddd;
+        }
+
+        .info-group {
+            flex: 1;
+        }
+
+        .info-label {
+            font-size: 0.85rem;
+            color: #666;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .info-value {
+            font-size: 1.2rem;
+            color: #1a1a1a;
+            font-weight: 700;
+        }
+
+        .details-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .details-table thead {
+            background: #f5f5f5;
+        }
+
+        .details-table th {
+            padding: 12px 10px;
+            text-align: center;
+            font-weight: 700;
+            color: #333;
+            font-size: 0.9rem;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .details-table td {
+            padding: 12px 10px;
+            text-align: center;
+            color: #555;
+            border-bottom: 1px solid #eee;
+            font-size: 0.95rem;
+        }
+
+        .details-table tr:hover {
+            background: #fafafa;
+        }
+
+        .details-footer {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .btn-back {
+            background: white;
+            color: #1a365d;
+            border: 2px solid #1a365d;
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            flex: 1;
+        }
+
+        .btn-back:hover {
+            background: #f8fafc;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(26, 54, 93, 0.15);
+        }
+
+        .btn-print {
+            background: linear-gradient(135deg, #0070c0 0%, #0055a3 100%);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            flex: 1;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 15px rgba(0, 112, 192, 0.25);
+        }
+
+        .btn-print:hover {
+            background: linear-gradient(135deg, #0055a3 0%, #003f7a 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 112, 192, 0.35);
+        }
+
+        /* ───────────── Number Selection Styling ───────────── */
+        .number-selection {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .number-group {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            padding: 10px 15px;
+            background: #f5f5f5;
+            border-radius: 8px;
+        }
+
+        .number-buttons {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .number-btn {
+            width: 38px;
+            height: 38px;
+            border: 2px solid #ddd;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #333;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .number-btn:hover {
+            border-color: #0070c0;
+            color: #0070c0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 112, 192, 0.15);
+        }
+
+        .number-btn.active {
+            background: linear-gradient(135deg, #0070c0 0%, #0055a3 100%);
+            color: white;
+            border-color: #0070c0;
+            box-shadow: 0 4px 12px rgba(0, 112, 192, 0.3);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .number-selection {
+                gap: 10px;
+                margin-top: 15px;
+                margin-bottom: 8px;
+                flex-direction: row;
+                flex-wrap: nowrap;
+            }
+
+            .number-group {
+                gap: 4px;
+                padding: 6px 10px;
+                flex: 1;
+                min-width: 0;
+            }
+
+            .number-group label {
+                font-size: 0.7rem;
+                min-width: 35px;
+            }
+
+            .number-buttons {
+                gap: 3px;
+                flex: 1;
+            }
+
+            .number-btn {
+                width: 28px;
+                height: 28px;
+                font-size: 0.8rem;
+                padding: 0;
+                flex-shrink: 0;
+            }
+
+            .footer-section {
+                padding: 15px 10px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .number-selection {
+                gap: 6px;
+                margin-top: 10px;
+                margin-bottom: 5px;
+            }
+
+            .number-group {
+                gap: 2px;
+                padding: 5px 8px;
+            }
+
+            .number-group label {
+                font-size: 0.65rem;
+                min-width: 30px;
+            }
+
+            .number-buttons {
+                gap: 2px;
+            }
+
+            .number-btn {
+                width: 26px;
+                height: 26px;
+                font-size: 0.75rem;
+            }
+
+            .footer-section {
+                padding: 12px 8px !important;
+            }
+        }
+
+        /* ───────────── Lottery/Betting List UI ───────────── */
+        .list-header {
+            display: flex;
+            align-items: center;
+            padding: 12px 10px;
+            background: #f9f9f9;
+            border-bottom: 2px solid #e0e0e0;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #28a745;
+        }
+        .col-order { flex: 1; text-align: center; }
+        .col-number { flex: 1; text-align: center; }
+        .col-value { flex: 1; text-align: center; }
+        .col-action { flex: 1; text-align: center; }
+
+        .list-body {
+            background: #fff;
+            min-height: 120px;
+        }
+        .list-row {
+            display: flex;
+            align-items: center;
+            padding: 12px 10px;
+            background: #f9f9f9;
+            border-bottom: 1px solid #e8e8e8;
+            font-size: 0.95rem;
+        }
+        .list-row .col-order { color: #333; text-align: center; }
+        .list-row .col-number { color: #28a745; text-align: center; }
+        .list-row .col-value { color: #28a745; text-align: center; }
+        .list-row .col-action { text-align: center; }
+        .btn-remove-row {
+            background: none;
+            border: none;
+            color: #28a745;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .total-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 16px;
+            background: #ffffff;
+            font-weight: 700;
+            font-size: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .total-bar > div {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .total-Weight {
+            color: #28a745;
+            font-weight: 700;
+        }
+        
+        .total-amount { 
+            color: #0066ff;
+            font-weight: 700;
+        }
+
+        @media (max-width: 480px) {
+            .total-bar {
+                flex-direction: column;
+                gap: 8px;
+                align-items: flex-start;
+            }
+            
+            .total-bar > div {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        /* คีย์แพดแบบกรอบขาวขอบน้ำเงิน – ยืนอยู่ตำแหน่งล่าง */
+        .keypad-box {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 600px;
+            padding: 16px;
+            background: #fff;
+            border: 2px solid #0066ff;
+            border-radius: 8px 8px 0 0;
+            box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            box-sizing: border-box;
+        }
+        .keypad-top-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        .keypad-input {
+            flex: 1;
+            padding: 12px 14px;
+            font-size: 1rem;
+            border: 2px solid #0066ff;
+            border-radius: 6px;
+            background: #fff;
+            text-align: left;
+        }
+        .btn-add-keypad {
+            padding: 12px 20px;
+            background: #0066ff;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        .keypad-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        .keypad-btn {
+            min-height: 48px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.15rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .keypad-btn.blue {
+            background: #0066ff;
+            color: #fff;
+        }
+        .keypad-btn.blue:hover { background: #0052cc; }
+        .btn-save-keypad {
+            width: 100%;
+            padding: 14px 24px;
+            background: #0066ff;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+        .btn-save-keypad:hover { background: #0052cc; }
+
+        /* ───────────── Settings Modal ───────────── */
+        .settings-card {
+            max-width: 400px;
+        }
+        .settings-form {
+            margin: 20px 0;
+            text-align: left;
+        }
+        .settings-group {
+            margin-bottom: 20px;
+        }
+        .settings-label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        .settings-input-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .settings-input {
+            flex: 1;
+            padding: 12px 14px;
+            font-size: 1.1rem;
+            border: 2px solid #0066ff;
+            border-radius: 6px;
+            text-align: center;
+        }
+        .settings-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.2);
+        }
+        .settings-unit {
+            font-weight: 600;
+            color: #666;
+            font-size: 1rem;
+        }
+        .settings-current {
+            padding: 12px 16px;
+            background: #e8f5e9;
+            border-radius: 6px;
+            color: #28a745;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        /* ───────────── Footer Style ───────────── */
+        .footer-section {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 600px;
+            background: linear-gradient(180deg, #ffffff 0%, #f9f9f9 100%);
+            border-top: 2px solid #f0f0f0;
+            padding: 20px 16px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+            z-index: 100;
+            box-sizing: border-box;
+        }
+
+        /* เว้นพื้นที่ล่างให้พอ scroll ดูข้อมูลไม่ทับ keypad-box */
+        .container {
+            padding-bottom: 320px;
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding-bottom: 300px;
+            }
+        }
+
+        /* ───────────── Print Styling ───────────── */
+        @media print {
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                background: white;
+                font-size: 14px;
+            }
+
+            .navbar,
+            .mobile-menu,
+            .nav-links,
+            .nav-container,
+            .footer-section,
+            .modal-overlay,
+            .modal-close,
+            .details-footer,
+            .container-content,
+            .container {
+                display: none !important;
+            }
+
+            html, body {
+                width: 100%;
+                height: auto;
+                margin: 0;
+                padding: 0;
+            }
+
+            .details-content {
+                width: 100%;
+                max-width: 100%;
+                box-shadow: none;
+                padding: 40px;
+                max-height: 100%;
+                transform: none;
+                position: relative;
+                background: white;
+                border-radius: 0;
+                display: block !important;
+            }
+
+            .details-modal {
+                display: block !important;
+                position: relative;
+            }
+
+            .modal-overlay.details-modal {
+                position: relative !important;
+                background: white !important;
+                opacity: 1 !important;
+                z-index: auto !important;
+                width: 100%;
+                height: auto;
+                display: block !important;
+                top: 0;
+                left: 0;
+            }
+
+            .details-header {
+                margin-bottom: 20px;
+            }
+
+            .details-title {
+                font-size: 18px;
+                margin-bottom: 8px;
+            }
+
+            .details-subtitle {
+                font-size: 12px;
+                margin-bottom: 15px;
+            }
+
+            .details-info {
+                display: flex;
+                gap: 40px;
+                margin-bottom: 20px;
+                padding-bottom: 20px;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .info-group {
+                flex: 1;
+            }
+
+            .info-label {
+                font-size: 11px;
+                color: #666;
+                margin-bottom: 5px;
+            }
+
+            .info-value {
+                font-size: 14px;
+                font-weight: 700;
+                color: #000;
+            }
+
+            .details-table {
+                margin: 15px 0;
+                width: 100%;
+            }
+
+            .details-table th,
+            .details-table td {
+                padding: 8px 10px;
+                border: 1px solid #ddd;
+                font-size: 12px;
+            }
+
+            .details-table th {
+                background: #f5f5f5;
+                font-weight: 700;
+            }
+
+            .details-table tr:hover {
+                background: white;
+            }
+
+            @page {
+                margin: 0;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">App<span>ຂອງເຮົາ</span></a>
+
+            <ul class="nav-links">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+
+            <div style="display:flex; gap:12px; align-items:center;">
+                <button class="auth-btn login-btn" onclick="openSettingsModal()">ตั้งค่า</button>
+
+                <button class="menu-toggle">☰</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <a href="#" class="active">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+        <button class="auth-btn login-btn" onclick="openSettingsModal()"> ตั้งค่า</button>
+    </div>
+
+    <!-- พื้นที่เนื้อหา แบบ Lottery/Betting UI -->
+    <div class="container">
+        <div class="container-content">
+            <!-- หัวตาราง -->
+            <div class="list-header">
+                <span class="col-order">ລໍາດັບ</span>
+                <span class="col-number">ນ້ຳໜັກ(kg)</span>
+                <span class="col-value">ລາຄາ(₭)</span>
+                <span class="col-action">ລຶບ</span>
+            </div>
+
+            <!-- รายการ -->
+            <div class="list-body" id="recordList">
+                <!-- แถวจะเพิ่มด้วย JS -->
+            </div>
+
+            <!-- โซนช่องใส่ + คีย์แพด (กรอบขาวขอบน้ำเงิน) -->
+            <div class="keypad-box">
+                <!-- แถบยอดรวม -->
+                <div class="total-bar">
+                    <div>
+                        <span class="total-label">ລວມຈຳນວນນ້ຳໜັກ:</span>
+                        <span class="total-Weight" id="totalWeight">0 kg</span>
+                    </div>
+                    <div>
+                        <span class="total-label">ລວມຈຳນວນເງິນ:</span>
+                        <span class="total-amount" id="totalAmount">0 ₭</span>
+                    </div>
+                </div>
+                
+                <div class="keypad-top-row">
+                    <input type="text" id="betNumber" class="keypad-input" placeholder="" value="" readonly />
+                    <button type="button" class="btn-add-keypad" onclick="addBetRow()">add</button>
+                </div>
+                <div class="keypad-grid">
+                    <button type="button" class="keypad-btn blue" data-num="8">8</button>
+                    <button type="button" class="keypad-btn blue" data-num="9">9</button>
+                    <button type="button" class="keypad-btn blue" data-num="0">0</button>
+                    <button type="button" class="keypad-btn blue keypad-clear" onclick="deleteLastDigit()">x</button>
+                    <button type="button" class="keypad-btn blue" data-num="4">4</button>
+                    <button type="button" class="keypad-btn blue" data-num="5">5</button>
+                    <button type="button" class="keypad-btn blue" data-num="6">6</button>
+                    <button type="button" class="keypad-btn blue" data-num="7">7</button>
+                    <button type="button" class="keypad-btn blue" data-num="00">00</button>
+                    <button type="button" class="keypad-btn blue" data-num="1">1</button>
+                    <button type="button" class="keypad-btn blue" data-num="2">2</button>
+                    <button type="button" class="keypad-btn blue" data-num="3">3</button>
+                </div>
+                <button type="button" class="btn-save-keypad" onclick="showSaveModal()">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal HTML -->
+    <div class="modal-overlay" id="saveModal">
+        <div class="modal-card">
+            <div class="modal-close" onclick="closeModal()">&times;</div>
+            <div class="modal-title">ບັນທຶກຊື່ລູກຄ້າ</div>
+            
+            <!-- ช่องกรอกชื่อลูกค้า -->
+            <div class="customer-input-group">
+                <input type="text" id="customerNameInput" 
+                       class="customer-input-field" 
+                       placeholder="ກະລຸນາປ້ອນຊື່ລູກຄ້າ" 
+                       autocomplete="off" />
+            </div>
+            
+            <div class="modal-actions">
+                <button class="btn-modal-details" onclick="viewDetails()">ໃບບິນ</button>
+                <button class="btn-modal-save" onclick="confirmSaveAll()">ບັນທຶກ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Details Modal HTML -->
+    <div class="modal-overlay details-modal" id="detailsModal">
+        <div class="details-content">
+            <div class="modal-close" onclick="closeDetailsModal()">&times;</div>
+            <div class="details-header">
+                <div class="details-title">ໃບບິນຂາຍຢາງພາລາ</div>
+                <div class="details-subtitle" id="detailsDate"></div>
+            </div>
+
+            <div class="details-info">
+                <div class="info-group">
+                    <div class="info-label">ຊື່ລູກຄ້າ</div>
+                    <div class="info-value" id="detailsCustomerName">-</div>
+                </div>
+                <div class="info-group">
+                    <div class="info-label">ນ້ຳໜັກທັງໝົດ</div>
+                    <div class="info-value" id="detailsTotalWeight">0 kg</div>
+                </div>
+            </div>
+
+            <table class="details-table">
+                <thead>
+                    <tr>
+                        <th>ລຳດັບ</th>
+                        <th>ນ້ຳໜັກ</th>
+                        <th>ລຳດັບ</th>
+                        <th>ນ້ຳໜັກ</th>
+                    </tr>
+                </thead>
+                <tbody id="detailsTableBody">
+                    <!-- Data will be populated here -->
+                </tbody>
+            </table>
+            <div class="details-info">
+                <div class="info-group">
+                    <div class="info-label">ລວມເງີນທັງໝົດ</div>
+                    <div class="info-value" id="detailsTotalMoney">0 kg × 35 = 0 ₭</div>
+                </div>
+            </div>
+             
+            <div class="details-footer">
+                <button class="btn-back" onclick="closeDetailsModal()">ກັບໄປ</button>
+                <button class="btn-print" onclick="printDetails()">ພິມ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal - ตั้งค่าราคายางพารา -->
+    <div class="modal-overlay" id="settingsModal">
+        <div class="modal-card settings-card">
+            <div class="modal-close" onclick="closeSettingsModal()">&times;</div>
+            <div class="modal-title">ตั้งค่าราคายางพารา</div>
+            <div class="settings-form">
+                <div class="settings-group">
+                    <label class="settings-label">ราคายางพารา (ต่อ kg)</label>
+                    <div class="settings-input-wrap">
+                        <input type="number" id="rubberPrice" class="settings-input" placeholder="35" min="0" step="0.5" />
+                        <span class="settings-unit">₭/kg</span>
+                    </div>
+                </div>
+                <div class="settings-group">
+                    <label class="settings-label">ราคาปัจจุบัน</label>
+                    <div class="settings-current" id="currentPriceDisplay">35 ₭/kg</div>
+                </div>
+                <div class="settings-group">
+                    <div style="font-size: 0.85rem; color: #666; margin-top: 5px;">
+                        <i>ราคานี้จะถูกบันทึกไว้แม้ปิดเบราว์เซอร์</i>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-modal-details" onclick="closeSettingsModal()">ยกเลิก</button>
+                <button class="btn-modal-save" onclick="saveSettings()">บันทึก</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ตัวแปร global
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        let listCount = 1;
+        let currentCustomerName = '';
+        let rubberPricePerKg = 35; // ค่าเริ่มต้นราคายางพารา
+        let customerHistory = [];
+
+        // Mobile Menu Toggle
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            if (mobileMenu.classList.contains('active')) {
+                menuToggle.textContent = '✕';
+            } else {
+                menuToggle.textContent = '☰';
+            }
+        });
+
+        // ปิดเมนูเมื่อกด link
+        document.querySelectorAll('.mobile-menu a, .mobile-menu button').forEach(item => {
+            item.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                menuToggle.textContent = '☰';
+            });
+        });
+
+        // โหลดการตั้งค่าจาก localStorage เมื่อเริ่มต้น
+        function loadSettings() {
+            const savedPrice = localStorage.getItem('rubberPrice');
+            if (savedPrice) {
+                rubberPricePerKg = parseFloat(savedPrice);
+                // อัพเดทแสดงผลราคาปัจจุบัน
+                document.getElementById('currentPriceDisplay').innerText = rubberPricePerKg + ' ₭/kg';
+            }
+        }
+
+        // Keypad Functions
+        document.querySelectorAll('.keypad-btn[data-num]').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const num = this.getAttribute('data-num');
+                const el = document.getElementById('betNumber');
+                const raw = (el.value || '').replace(/,/g, '') + num;
+                el.value = formatNumber(parseInt(raw, 10) || 0);
+            });
+        });
+
+        function formatNumber(n) { 
+            return n.toLocaleString('en-US'); 
+        }
+
+        function addBetRow() {
+            const betInput = document.getElementById('betNumber');
+            const raw = (betInput.value || '0').replace(/,/g, '');
+            const weight = parseInt(raw, 10) || 0; // น้ำหนัก (kg)
+            
+            if (weight <= 0) {
+                alert('ກະລຸນາໃສ່ນ້ຳໜັກ');
+                return;
+            }
+            
+            const price = weight * rubberPricePerKg; // ราคา = น้ำหนัก × ราคาต่อ kg
+            const list = document.getElementById('recordList');
+            const row = document.createElement('div');
+            row.className = 'list-row';
+            row.dataset.weight = weight;
+            row.dataset.price = price;
+            row.innerHTML = 
+                '<span class="col-order">' + listCount + '</span>' +
+                '<span class="col-number">' + formatNumber(weight) + '</span>' +
+                '<span class="col-value">' + formatNumber(price) + ' ₭</span>' +
+                '<span class="col-action"><button type="button" class="btn-remove-row" onclick="removeListRow(this)">x</button></span>';
+            list.appendChild(row);
+            listCount++;
+            
+            // รีเซ็ตค่าในช่องกรอก
+            betInput.value = '';
+            
+            // อัพเดตยอดรวม
+            updateTotalAmount();
+        }
+
+        function removeListRow(btn) {
+            btn.closest('.list-row').remove();
+            const rows = document.querySelectorAll('#recordList .list-row');
+            rows.forEach((r, i) => { 
+                r.querySelector('.col-order').textContent = i + 1; 
+            });
+            listCount = rows.length + 1;
+            
+            // อัพเดตยอดรวม
+            updateTotalAmount();
+        }
+
+        function updateTotalAmount() {
+            let totalWeight = 0;
+            let totalPrice = 0;
+            document.querySelectorAll('#recordList .list-row').forEach(r => {
+                totalWeight += parseInt(r.dataset.weight || '0', 10);
+                totalPrice += parseInt(r.dataset.price || '0', 10);
+            });
+            
+            // อัพเดตน้ำหนักรวม
+            document.getElementById('totalWeight').textContent = formatNumber(totalWeight) + ' kg';
+            
+            // อัพเดตเงินรวม
+            document.getElementById('totalAmount').textContent = formatNumber(totalPrice) + ' ₭';
+        }
+
+        function deleteLastDigit() {
+            const el = document.getElementById('betNumber');
+            const raw = (el.value || '').replace(/,/g, '').slice(0, -1);
+            el.value = raw ? formatNumber(parseInt(raw, 10)) : '0';
+        }
+
+        function showSaveModal() {
+            const modal = document.getElementById('saveModal');
+            const input = document.getElementById('customerNameInput');
+            
+            // โหลดประวัติจาก localStorage
+            const savedHistory = localStorage.getItem('customerHistory');
+            if (savedHistory) {
+                customerHistory = JSON.parse(savedHistory);
+            }
+            
+            input.value = currentCustomerName || '';
+            modal.style.display = 'flex';
+            setTimeout(() => {
+                modal.classList.add('active');
+                // โฟกัสที่ช่องกรอกชื่ออัตโนมัติ
+                input.focus();
+            }, 10);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('saveModal');
+            modal.classList.remove('active');
+            setTimeout(() => modal.style.display = 'none', 200);
+        }
+
+        function viewDetails() {
+            const customerName = document.getElementById('customerNameInput').value.trim();
+            const rows = document.querySelectorAll('#recordList .list-row');
+            
+            if (rows.length === 0) {
+                alert('ບໍ່ມີຂໍ້ມູນເພື່ອສະແດງ');
+                return;
+            }
+            
+            if (!customerName) {
+                alert('ກະລຸນາໃສ່ຊື່ລູກຄ້າ');
+                document.getElementById('customerNameInput').focus();
+                return;
+            }
+            
+            currentCustomerName = customerName;
+            document.getElementById('detailsCustomerName').innerText = customerName;
+            
+            let totalWeight = 0;
+            let totalPrice = 0;
+            const detailsTableBody = document.getElementById('detailsTableBody');
+            detailsTableBody.innerHTML = '';
+            
+            rows.forEach((r, i) => {
+                const weight = parseInt(r.dataset.weight || '0', 10);
+                const price = parseInt(r.dataset.price || '0', 10);
+                totalWeight += weight;
+                totalPrice += price;
+                
+                const newRow = detailsTableBody.insertRow();
+                newRow.insertCell(0).innerText = i + 1;
+                newRow.insertCell(1).innerText = formatNumber(weight) + ' kg';
+                newRow.insertCell(2).innerText = i + 1; // สำหรับคอลัมน์ที่ 3
+                newRow.insertCell(3).innerText = formatNumber(price) + ' ₭';
+            });
+            
+            document.getElementById('detailsTotalWeight').innerText = formatNumber(totalWeight) + ' kg';
+            document.getElementById('detailsTotalMoney').innerText = formatNumber(totalWeight) + ' kg × ' + rubberPricePerKg + ' = ' + formatNumber(totalPrice) + ' ₭';
+            
+            const today = new Date();
+            document.getElementById('detailsDate').innerText = 'ວັນທີ: ' + today.toLocaleDateString('lo-LA') + ' | ເວລາ: ' + today.toLocaleTimeString('lo-LA', { hour: '2-digit', minute: '2-digit' });
+            
+            closeModal();
+            const detailsModal = document.getElementById('detailsModal');
+            detailsModal.style.display = 'flex';
+            setTimeout(() => detailsModal.classList.add('active'), 10);
+        }
+
+        function closeDetailsModal() {
+            const detailsModal = document.getElementById('detailsModal');
+            detailsModal.classList.remove('active');
+            setTimeout(() => {
+                detailsModal.style.display = 'none';
+            }, 200);
+        }
+
+        function confirmSaveAll() {
+            const customerName = document.getElementById('customerNameInput').value.trim();
+            
+            if (!customerName) {
+                alert('ກະລຸນາໃສ່ຊື່ລູກຄ້າກ່ອນບັນທຶກ');
+                document.getElementById('customerNameInput').focus();
+                return;
+            }
+            
+            // เพิ่มชื่อลูกค้าในประวัติถ้ายังไม่มี
+            if (!customerHistory.includes(customerName)) {
+                customerHistory.push(customerName);
+                // บันทึกลง localStorage เพื่อคงข้อมูลไว้
+                localStorage.setItem('customerHistory', JSON.stringify(customerHistory));
+            }
+            
+            currentCustomerName = customerName;
+            
+            // สามารถเพิ่มโค้ดบันทึกข้อมูลลงฐานข้อมูลหรือเซิร์ฟเวอร์ที่นี่
+            alert('ບັນທຶກຂໍ້ມູນຂອງ ' + customerName + ' ສຳເລັດແລ້ວ!');
+            
+            // รีเซ็ตข้อมูลหลังจากบันทึก
+            resetAllData();
+            closeModal();
+        }
+
+        function resetAllData() {
+            // ล้างรายการน้ำหนักทั้งหมด
+            document.getElementById('recordList').innerHTML = '';
+            listCount = 1;
+            updateTotalAmount();
+            document.getElementById('betNumber').value = '';
+            document.getElementById('customerNameInput').value = '';
+            currentCustomerName = '';
+        }
+
+        // ───────────── Settings Modal Functions ─────────────
+        function openSettingsModal() {
+            const modal = document.getElementById('settingsModal');
+            document.getElementById('rubberPrice').value = rubberPricePerKg;
+            document.getElementById('currentPriceDisplay').innerText = rubberPricePerKg + ' ₭/kg';
+            modal.style.display = 'flex';
+            setTimeout(() => modal.classList.add('active'), 10);
+        }
+
+        function closeSettingsModal() {
+            const modal = document.getElementById('settingsModal');
+            modal.classList.remove('active');
+            setTimeout(() => modal.style.display = 'none', 200);
+        }
+
+        function saveSettings() {
+            const priceInput = document.getElementById('rubberPrice');
+            const newPrice = parseFloat(priceInput.value) || 35;
+            
+            // ตรวจสอบว่ามีการเปลี่ยนแปลงหรือไม่
+            if (newPrice === rubberPricePerKg) {
+                alert('ราคายังเหมือนเดิม ไม่มีการเปลี่ยนแปลง');
+                return;
+            }
+            
+            rubberPricePerKg = newPrice;
+            
+            // บันทึกลง localStorage
+            localStorage.setItem('rubberPrice', rubberPricePerKg);
+            
+            document.getElementById('currentPriceDisplay').innerText = rubberPricePerKg + ' ₭/kg';
+            alert('บันทึกราคายางพาราเรียบร้อย: ' + rubberPricePerKg + ' ₭/kg');
+            
+            // รีเฟรชข้อมูลที่แสดงผล
+            refreshAllData();
+            
+            closeSettingsModal();
+        }
+
+        // ฟังก์ชันรีเฟรชข้อมูลทั้งหมดเมื่อราคาเปลี่ยนแปลง
+        function refreshAllData() {
+            // อัพเดตราคาในรายการที่มีอยู่
+            document.querySelectorAll('#recordList .list-row').forEach(row => {
+                const weight = parseInt(row.dataset.weight || '0', 10);
+                const price = weight * rubberPricePerKg;
+                row.dataset.price = price;
+                row.querySelector('.col-value').textContent = formatNumber(price) + ' ₭';
+            });
+            
+            // อัพเดตยอดรวม
+            updateTotalAmount();
+        }
+
+        function printDetails() {
+            window.print();
+        }
+
+        function selectNumber(btn, number) {
+            // Remove active class from all number buttons
+            document.querySelectorAll('.number-btn').forEach(b => {
+                b.classList.remove('active');
+            });
+            
+            // Add active class to clicked button
+            btn.classList.add('active');
+            
+            // Add the number to the weight input field
+            const weightInput = document.getElementById('weight');
+            weightInput.value += number;
+            weightInput.focus();
+        }
+
+        // เพิ่ม Event Listener สำหรับกด Enter ในช่องกรอกชื่อ
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSettings();
+            
+            const customerInput = document.getElementById('customerNameInput');
+            if (customerInput) {
+                customerInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        confirmSaveAll();
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
