@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="th">
 
 <head>
@@ -14,7 +14,10 @@
         }
 
         body {
-            font-family: system-ui, -apple-system, sans-serif;
+            font-family:
+                system-ui,
+                -apple-system,
+                sans-serif;
             background: #ffffff;
         }
 
@@ -148,7 +151,6 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-
             .nav-links {
                 display: none;
             }
@@ -165,12 +167,10 @@
         .container {
             max-width: 600px;
             margin: auto;
-            /* background: #ffffff; */
             padding: 5px;
             padding-top: 80px;
             border-radius: 8px;
             overflow: hidden;
-            /* box-shadow: 0 2px 8px rgba(0, 0, 0, .1); */
             display: flex;
             flex-direction: column;
             min-height: calc(100vh - 70px);
@@ -191,22 +191,18 @@
             margin-top: 80px;
         }
 
-        /* เพิ่มใน <style> */
         .weight-wrapper {
             position: relative;
             display: flex;
             align-items: center;
             margin-bottom: 15px;
-
         }
 
         #weight {
             width: 100%;
             padding: 10px 90px 10px 10px;
-            /* เว้นขวาให้ปุ่ม */
             font-size: 16px;
             border: 2px solid #0b54ca;
-            /* เปลี่ยนเป็น 2px solid เพื่อความชัดเจน */
             border-radius: 4px;
             transition: all 0.2s;
         }
@@ -220,7 +216,6 @@
         .btn-inside {
             position: absolute;
             right: 3px;
-            /* ห่างจากขอบขวา 4px */
             top: 50%;
             transform: translateY(-50%);
             background: #0b54ca;
@@ -230,7 +225,6 @@
             border-radius: 2px;
             cursor: pointer;
             font-size: 14px;
-            /* height: 100%; */
         }
 
         input[type="text"] {
@@ -294,7 +288,6 @@
             margin-bottom: 15px;
             width: 100%;
             border: 2px solid #0b54ca;
-            /* เพิ่ม 2px solid เพื่อความชัดเจน */
             border-radius: 4px;
             padding: 10px;
             font-size: 16px;
@@ -345,10 +338,9 @@
             background: white;
             width: 100%;
             max-height: 400px;
-            max-width: 700px;
+            max-width: 600px;
             border-radius: 2px;
             padding: 45px 35px;
-            /* box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.1); */
             text-align: center;
             position: relative;
             transform: scale(0.92) translateY(20px);
@@ -409,7 +401,7 @@
             .customer-input-group {
                 margin: 20px 0 30px;
             }
-            
+
             .customer-input-field {
                 padding: 14px 18px;
                 font-size: 1rem;
@@ -488,11 +480,13 @@
 
         .details-content {
             width: 90%;
-            max-width: 700px;
+            max-width: 600px;
             background: white;
             border-radius: 2px;
             padding: 40px 35px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.1);
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.15),
+                0 0 1px rgba(0, 0, 0, 0.1);
             position: relative;
             transform: scale(0.92) translateY(20px);
             transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -520,6 +514,16 @@
             font-size: 0.9rem;
             color: #888;
             margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .details-sub-header {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 5px;
         }
 
         .details-info {
@@ -574,6 +578,14 @@
             color: #555;
             border-bottom: 1px solid #eee;
             font-size: 0.95rem;
+        }
+
+        .summary-row td {
+            font-weight: 700;
+            background: #e6f7ff;
+            /* Light blue background for totals */
+            border-top: 2px solid #0066ff;
+            color: #0066ff;
         }
 
         .details-table tr:hover {
@@ -765,15 +777,32 @@
             font-size: 0.95rem;
             color: #28a745;
         }
-        .col-order { flex: 1; text-align: center; }
-        .col-number { flex: 1; text-align: center; }
-        .col-value { flex: 1; text-align: center; }
-        .col-action { flex: 1; text-align: center; }
+
+        .col-order {
+            flex: 1;
+            text-align: center;
+        }
+
+        .col-number {
+            flex: 1;
+            text-align: center;
+        }
+
+        .col-value {
+            flex: 1;
+            text-align: center;
+        }
+
+        .col-action {
+            flex: 1;
+            text-align: center;
+        }
 
         .list-body {
             background: #fff;
             min-height: 120px;
         }
+
         .list-row {
             display: flex;
             align-items: center;
@@ -782,10 +811,26 @@
             border-bottom: 1px solid #e8e8e8;
             font-size: 0.95rem;
         }
-        .list-row .col-order { color: #333; text-align: center; }
-        .list-row .col-number { color: #28a745; text-align: center; }
-        .list-row .col-value { color: #28a745; text-align: center; }
-        .list-row .col-action { text-align: center; }
+
+        .list-row .col-order {
+            color: #333;
+            text-align: center;
+        }
+
+        .list-row .col-number {
+            color: #28a745;
+            text-align: center;
+        }
+
+        .list-row .col-value {
+            color: #0066ff;
+            text-align: center;
+        }
+
+        .list-row .col-action {
+            text-align: center;
+        }
+
         .btn-remove-row {
             background: none;
             border: none;
@@ -805,19 +850,19 @@
             font-size: 1rem;
             flex-wrap: wrap;
         }
-        
-        .total-bar > div {
+
+        .total-bar>div {
             display: flex;
             align-items: center;
             gap: 10px;
         }
-        
+
         .total-Weight {
             color: #28a745;
             font-weight: 700;
         }
-        
-        .total-amount { 
+
+        .total-amount {
             color: #0066ff;
             font-weight: 700;
         }
@@ -828,8 +873,8 @@
                 gap: 8px;
                 align-items: flex-start;
             }
-            
-            .total-bar > div {
+
+            .total-bar>div {
                 width: 100%;
                 justify-content: space-between;
             }
@@ -851,12 +896,14 @@
             z-index: 100;
             box-sizing: border-box;
         }
+
         .keypad-top-row {
             display: flex;
             align-items: flex-start;
             gap: 10px;
             margin-bottom: 12px;
         }
+
         .keypad-input {
             flex: 1;
             padding: 12px 14px;
@@ -866,6 +913,7 @@
             background: #fff;
             text-align: left;
         }
+
         .btn-add-keypad {
             padding: 12px 20px;
             background: #0066ff;
@@ -876,12 +924,14 @@
             font-size: 1rem;
             cursor: pointer;
         }
+
         .keypad-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 10px;
             margin-bottom: 12px;
         }
+
         .keypad-btn {
             min-height: 48px;
             border: none;
@@ -890,11 +940,16 @@
             font-weight: 600;
             cursor: pointer;
         }
+
         .keypad-btn.blue {
             background: #0066ff;
             color: #fff;
         }
-        .keypad-btn.blue:hover { background: #0052cc; }
+
+        .keypad-btn.blue:hover {
+            background: #0052cc;
+        }
+
         .btn-save-keypad {
             width: 100%;
             padding: 14px 24px;
@@ -906,19 +961,25 @@
             font-size: 1.1rem;
             cursor: pointer;
         }
-        .btn-save-keypad:hover { background: #0052cc; }
+
+        .btn-save-keypad:hover {
+            background: #0052cc;
+        }
 
         /* ───────────── Settings Modal ───────────── */
         .settings-card {
-            max-width: 400px;
+            max-width: 600px;
         }
+
         .settings-form {
             margin: 20px 0;
             text-align: left;
         }
+
         .settings-group {
             margin-bottom: 20px;
         }
+
         .settings-label {
             display: block;
             font-weight: 600;
@@ -926,11 +987,13 @@
             margin-bottom: 8px;
             font-size: 0.95rem;
         }
+
         .settings-input-wrap {
             display: flex;
             align-items: center;
             gap: 10px;
         }
+
         .settings-input {
             flex: 1;
             padding: 12px 14px;
@@ -939,15 +1002,18 @@
             border-radius: 6px;
             text-align: center;
         }
+
         .settings-input:focus {
             outline: none;
             box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.2);
         }
+
         .settings-unit {
             font-weight: 600;
             color: #666;
             font-size: 1rem;
         }
+
         .settings-current {
             padding: 12px 16px;
             background: #e8f5e9;
@@ -978,6 +1044,7 @@
         .container {
             padding-bottom: 320px;
         }
+
         @media (max-width: 480px) {
             .container {
                 padding-bottom: 300px;
@@ -1009,7 +1076,8 @@
                 display: none !important;
             }
 
-            html, body {
+            html,
+            body {
                 width: 100%;
                 height: auto;
                 margin: 0;
@@ -1114,7 +1182,6 @@
 </head>
 
 <body>
-
     <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-container">
@@ -1127,8 +1194,10 @@
                 <li><a href="#">Contact</a></li>
             </ul>
 
-            <div style="display:flex; gap:12px; align-items:center;">
-                <button class="auth-btn login-btn" onclick="openSettingsModal()">ตั้งค่า</button>
+            <div style="display: flex; gap: 12px; align-items: center">
+                <button class="auth-btn login-btn" onclick="openSettingsModal()">
+                    ตั้งค่า
+                </button>
 
                 <button class="menu-toggle">☰</button>
             </div>
@@ -1141,7 +1210,9 @@
         <a href="#">About</a>
         <a href="#">Services</a>
         <a href="#">Contact</a>
-        <button class="auth-btn login-btn" onclick="openSettingsModal()"> ตั้งค่า</button>
+        <button class="auth-btn login-btn" onclick="openSettingsModal()">
+            ตั้งค่า
+        </button>
     </div>
 
     <!-- พื้นที่เนื้อหา แบบ Lottery/Betting UI -->
@@ -1173,60 +1244,95 @@
                         <span class="total-amount" id="totalAmount">0 ₭</span>
                     </div>
                 </div>
-                
+
                 <div class="keypad-top-row">
                     <input type="text" id="betNumber" class="keypad-input" placeholder="" value="" readonly />
-                    <button type="button" class="btn-add-keypad" onclick="addBetRow()">add</button>
+                    <button type="button" class="btn-add-keypad" onclick="addBetRow()">
+                        add
+                    </button>
                 </div>
                 <div class="keypad-grid">
-                    <button type="button" class="keypad-btn blue" data-num="8">8</button>
-                    <button type="button" class="keypad-btn blue" data-num="9">9</button>
-                    <button type="button" class="keypad-btn blue" data-num="0">0</button>
-                    <button type="button" class="keypad-btn blue keypad-clear" onclick="deleteLastDigit()">x</button>
-                    <button type="button" class="keypad-btn blue" data-num="4">4</button>
-                    <button type="button" class="keypad-btn blue" data-num="5">5</button>
-                    <button type="button" class="keypad-btn blue" data-num="6">6</button>
-                    <button type="button" class="keypad-btn blue" data-num="7">7</button>
-                    <button type="button" class="keypad-btn blue" data-num="00">00</button>
-                    <button type="button" class="keypad-btn blue" data-num="1">1</button>
-                    <button type="button" class="keypad-btn blue" data-num="2">2</button>
-                    <button type="button" class="keypad-btn blue" data-num="3">3</button>
+                    <button type="button" class="keypad-btn blue" data-num="8">
+                        8
+                    </button>
+                    <button type="button" class="keypad-btn blue" data-num="9">
+                        9
+                    </button>
+                    <button type="button" class="keypad-btn blue" data-num=".">
+                        .
+                    </button>
+                    <button type="button" class="keypad-btn blue keypad-clear" onclick="deleteLastDigit()">
+                        x
+                    </button>
+                    <button type="button" class="keypad-btn blue" data-num="4">
+                        4
+                    </button>
+                    <button type="button" class="keypad-btn blue" data-num="5">
+                        5
+                    </button>
+                    <button type="button" class="keypad-btn blue" data-num="6">
+                        6
+                    </button>
+                    <button type="button" class="keypad-btn blue" data-num="7">
+                        7
+                    </button>
+                    <button type="button" class="keypad-btn blue" data-num="0">
+                        0
+                    </button>
+                    <button type="button" class="keypad-btn blue" data-num="1">
+                        1
+                    </button>
+                    <button type="button" class="keypad-btn blue" data-num="2">
+                        2
+                    </button>
+                    <button type="button" class="keypad-btn blue" data-num="3">
+                        3
+                    </button>
                 </div>
-                <button type="button" class="btn-save-keypad" onclick="showSaveModal()">Save</button>
+                <button type="button" class="btn-save-keypad" onclick="showSaveModal()">
+                    Save
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- Modal HTML -->
+    <!-- Modal HTML - สำหรับกรอกชื่อลูกค้า -->
     <div class="modal-overlay" id="saveModal">
         <div class="modal-card">
             <div class="modal-close" onclick="closeModal()">&times;</div>
             <div class="modal-title">ບັນທຶກຊື່ລູກຄ້າ</div>
-            
+
             <!-- ช่องกรอกชื่อลูกค้า -->
             <div class="customer-input-group">
-                <input type="text" id="customerNameInput" 
-                       class="customer-input-field" 
-                       placeholder="ກະລຸນາປ້ອນຊື່ລູກຄ້າ" 
-                       autocomplete="off" />
+                <input type="text" id="customerNameInput" class="customer-input-field" placeholder="ກະລຸນາປ້ອນຊື່ລູກຄ້າ"
+                    autocomplete="off" />
             </div>
-            
+
             <div class="modal-actions">
-                <button class="btn-modal-details" onclick="viewDetails()">ໃບບິນ</button>
-                <button class="btn-modal-save" onclick="confirmSaveAll()">ບັນທຶກ</button>
+                <!-- ปุ่มบันทึกเดียว - เมื่อกดจะบันทึกและแสดงใบบิล -->
+                <button class="btn-modal-save" onclick="confirmSaveAndShowDetails()">
+                    ບັນທຶກ
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- Details Modal HTML -->
+    <!-- Details Modal HTML - สำหรับแสดงใบบิล -->
     <div class="modal-overlay details-modal" id="detailsModal">
         <div class="details-content">
-            <div class="modal-close" onclick="closeDetailsModal()">&times;</div>
+            <div class="modal-close" onclick="closeDetailsAndReset()">
+                &times;
+            </div>
             <div class="details-header">
                 <div class="details-title">ໃບບິນຂາຍຢາງພາລາ</div>
-                <div class="details-subtitle" id="detailsDate"></div>
-            </div>
 
+            </div>
+            <div class="details-subtitle" id="detailsDate"></div>
+            <div class="details-sub-header">ເລກທີໃບບິນ: <span id="detailsBillNumber"></span></div>
+            <div class="details-sub-header" style="display: flex; justify-content: space-between;">
+                <span>ຜູ້ຊື້:ທ້າວ ລາມົວ</span>
+                <span>ເບີໂທ: 0123456789</span>
+            </div>
             <div class="details-info">
                 <div class="info-group">
                     <div class="info-label">ຊື່ລູກຄ້າ</div>
@@ -1234,17 +1340,25 @@
                 </div>
                 <div class="info-group">
                     <div class="info-label">ນ້ຳໜັກທັງໝົດ</div>
-                    <div class="info-value" id="detailsTotalWeight">0 kg</div>
+                    <div class="info-value" id="detailsTotalWeight">
+                        0 kg
+                    </div>
+                </div>
+                <div class="info-group">
+                    <div class="info-label">ລວມເງີນທັງໝົດ</div>
+                    <div class="info-value" id="detailsSummaryPrice">
+                        0 ₭
+                    </div>
                 </div>
             </div>
 
             <table class="details-table">
                 <thead>
                     <tr>
-                        <th>ລຳດັບ</th>
                         <th>ນ້ຳໜັກ</th>
-                        <th>ລຳດັບ</th>
+                        <th>ລາຄາ</th>
                         <th>ນ້ຳໜັກ</th>
+                        <th>ລາຄາ</th>
                     </tr>
                 </thead>
                 <tbody id="detailsTableBody">
@@ -1254,13 +1368,19 @@
             <div class="details-info">
                 <div class="info-group">
                     <div class="info-label">ລວມເງີນທັງໝົດ</div>
-                    <div class="info-value" id="detailsTotalMoney">0 kg × 35 = 0 ₭</div>
+                    <div class="info-value" id="detailsTotalMoney">
+                        0 kg × 35 = 0 ₭
+                    </div>
                 </div>
             </div>
-             
+
             <div class="details-footer">
-                <button class="btn-back" onclick="closeDetailsModal()">ກັບໄປ</button>
-                <button class="btn-print" onclick="printDetails()">ພິມ</button>
+                <button class="btn-back" onclick="closeDetailsAndReset()">
+                    ເລີ່ມໃໝ່
+                </button>
+                <button class="btn-print" onclick="printDetails()">
+                    ພິມ
+                </button>
             </div>
         </div>
     </div>
@@ -1268,123 +1388,157 @@
     <!-- Settings Modal - ตั้งค่าราคายางพารา -->
     <div class="modal-overlay" id="settingsModal">
         <div class="modal-card settings-card">
-            <div class="modal-close" onclick="closeSettingsModal()">&times;</div>
+            <div class="modal-close" onclick="closeSettingsModal()">
+                &times;
+            </div>
             <div class="modal-title">ตั้งค่าราคายางพารา</div>
             <div class="settings-form">
                 <div class="settings-group">
                     <label class="settings-label">ราคายางพารา (ต่อ kg)</label>
                     <div class="settings-input-wrap">
-                        <input type="number" id="rubberPrice" class="settings-input" placeholder="35" min="0" step="0.5" />
+                        <input type="number" id="rubberPrice" class="settings-input" placeholder="35" min="0"
+                            step="0.5" />
                         <span class="settings-unit">₭/kg</span>
                     </div>
                 </div>
                 <div class="settings-group">
                     <label class="settings-label">ราคาปัจจุบัน</label>
-                    <div class="settings-current" id="currentPriceDisplay">35 ₭/kg</div>
+                    <div class="settings-current" id="currentPriceDisplay">
+                        35 ₭/kg
+                    </div>
                 </div>
                 <div class="settings-group">
-                    <div style="font-size: 0.85rem; color: #666; margin-top: 5px;">
+                    <div style="
+                                font-size: 0.85rem;
+                                color: #666;
+                                margin-top: 5px;
+                            ">
                         <i>ราคานี้จะถูกบันทึกไว้แม้ปิดเบราว์เซอร์</i>
                     </div>
                 </div>
             </div>
             <div class="modal-actions">
-                <button class="btn-modal-details" onclick="closeSettingsModal()">ยกเลิก</button>
-                <button class="btn-modal-save" onclick="saveSettings()">บันทึก</button>
+                <button class="btn-modal-details" onclick="closeSettingsModal()">
+                    ยกเลิก
+                </button>
+                <button class="btn-modal-save" onclick="saveSettings()">
+                    บันทึก
+                </button>
             </div>
         </div>
     </div>
 
     <script>
         // ตัวแปร global
-        const menuToggle = document.querySelector('.menu-toggle');
-        const mobileMenu = document.querySelector('.mobile-menu');
+        const menuToggle = document.querySelector(".menu-toggle");
+        const mobileMenu = document.querySelector(".mobile-menu");
         let listCount = 1;
-        let currentCustomerName = '';
+        let currentCustomerName = "";
         let rubberPricePerKg = 35; // ค่าเริ่มต้นราคายางพารา
         let customerHistory = [];
 
         // Mobile Menu Toggle
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-            if (mobileMenu.classList.contains('active')) {
-                menuToggle.textContent = '✕';
+        menuToggle.addEventListener("click", () => {
+            mobileMenu.classList.toggle("active");
+            if (mobileMenu.classList.contains("active")) {
+                menuToggle.textContent = "✕";
             } else {
-                menuToggle.textContent = '☰';
+                menuToggle.textContent = "☰";
             }
         });
 
         // ปิดเมนูเมื่อกด link
-        document.querySelectorAll('.mobile-menu a, .mobile-menu button').forEach(item => {
-            item.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-                menuToggle.textContent = '☰';
+        document
+            .querySelectorAll(".mobile-menu a, .mobile-menu button")
+            .forEach((item) => {
+                item.addEventListener("click", () => {
+                    mobileMenu.classList.remove("active");
+                    menuToggle.textContent = "☰";
+                });
             });
-        });
 
         // โหลดการตั้งค่าจาก localStorage เมื่อเริ่มต้น
         function loadSettings() {
-            const savedPrice = localStorage.getItem('rubberPrice');
+            const savedPrice = localStorage.getItem("rubberPrice");
             if (savedPrice) {
                 rubberPricePerKg = parseFloat(savedPrice);
                 // อัพเดทแสดงผลราคาปัจจุบัน
-                document.getElementById('currentPriceDisplay').innerText = rubberPricePerKg + ' ₭/kg';
+                document.getElementById("currentPriceDisplay").innerText =
+                    rubberPricePerKg + " ₭/kg";
             }
         }
 
         // Keypad Functions
-        document.querySelectorAll('.keypad-btn[data-num]').forEach(btn => {
-            btn.addEventListener('click', function () {
-                const num = this.getAttribute('data-num');
-                const el = document.getElementById('betNumber');
-                const raw = (el.value || '').replace(/,/g, '') + num;
-                el.value = formatNumber(parseInt(raw, 10) || 0);
-            });
-        });
+        document
+            .querySelectorAll(".keypad-btn[data-num]")
+            .forEach((btn) => {
+                btn.addEventListener("click", function () {
+                    const num = this.getAttribute("data-num");
+                    const el = document.getElementById("betNumber");
+                    let currentVal = (el.value || "").replace(/,/g, "");
 
-        function formatNumber(n) { 
-            return n.toLocaleString('en-US'); 
+                    if (num === "." && currentVal.includes(".")) {
+                        return; // ห้ามมีจุดซ้ำ
+                    }
+                    if (currentVal === "0" && num !== ".") {
+                        currentVal = "";
+                    }
+
+                    const nextVal = currentVal + num;
+                    el.value = nextVal; // Show raw input while typing to allow "5."
+                });
+            });
+
+        function formatNumber(n) {
+            return n.toLocaleString("en-US", { maximumFractionDigits: 2 });
         }
 
         function addBetRow() {
-            const betInput = document.getElementById('betNumber');
-            const raw = (betInput.value || '0').replace(/,/g, '');
-            const weight = parseInt(raw, 10) || 0; // น้ำหนัก (kg)
-            
+            const betInput = document.getElementById("betNumber");
+            const raw = (betInput.value || "0").replace(/,/g, "");
+            const weight = parseFloat(raw) || 0; // น้ำหนัก (kg) เป็นทศนิยมได้
+
             if (weight <= 0) {
-                alert('ກະລຸນາໃສ່ນ້ຳໜັກ');
+                alert("ກະລຸນາໃສ່ນ້ຳໜັກ");
                 return;
             }
-            
+
             const price = weight * rubberPricePerKg; // ราคา = น้ำหนัก × ราคาต่อ kg
-            const list = document.getElementById('recordList');
-            const row = document.createElement('div');
-            row.className = 'list-row';
+            const list = document.getElementById("recordList");
+            const row = document.createElement("div");
+            row.className = "list-row";
             row.dataset.weight = weight;
             row.dataset.price = price;
-            row.innerHTML = 
-                '<span class="col-order">' + listCount + '</span>' +
-                '<span class="col-number">' + formatNumber(weight) + '</span>' +
-                '<span class="col-value">' + formatNumber(price) + ' ₭</span>' +
+            // ใช้ formatNumber แบบอัตโนมัติ (อาจมีทศนิยมถ้าจำเป็น)
+            row.innerHTML =
+                '<span class="col-order">' +
+                listCount +
+                "</span>" +
+                '<span class="col-number">' +
+                weight +
+                "</span>" +
+                '<span class="col-value">' +
+                formatNumber(price) +
+                " ₭</span>" +
                 '<span class="col-action"><button type="button" class="btn-remove-row" onclick="removeListRow(this)">x</button></span>';
             list.appendChild(row);
             listCount++;
-            
+
             // รีเซ็ตค่าในช่องกรอก
-            betInput.value = '';
-            
+            betInput.value = "";
+
             // อัพเดตยอดรวม
             updateTotalAmount();
         }
 
         function removeListRow(btn) {
-            btn.closest('.list-row').remove();
-            const rows = document.querySelectorAll('#recordList .list-row');
-            rows.forEach((r, i) => { 
-                r.querySelector('.col-order').textContent = i + 1; 
+            btn.closest(".list-row").remove();
+            const rows = document.querySelectorAll("#recordList .list-row");
+            rows.forEach((r, i) => {
+                r.querySelector(".col-order").textContent = i + 1;
             });
             listCount = rows.length + 1;
-            
+
             // อัพเดตยอดรวม
             updateTotalAmount();
         }
@@ -1392,190 +1546,298 @@
         function updateTotalAmount() {
             let totalWeight = 0;
             let totalPrice = 0;
-            document.querySelectorAll('#recordList .list-row').forEach(r => {
-                totalWeight += parseInt(r.dataset.weight || '0', 10);
-                totalPrice += parseInt(r.dataset.price || '0', 10);
-            });
-            
-            // อัพเดตน้ำหนักรวม
-            document.getElementById('totalWeight').textContent = formatNumber(totalWeight) + ' kg';
-            
+            document
+                .querySelectorAll("#recordList .list-row")
+                .forEach((r) => {
+                    totalWeight += parseFloat(r.dataset.weight || "0");
+                    totalPrice += parseFloat(r.dataset.price || "0");
+                });
+
+            // อัพเดตน้ำหนักรวม (แสดงทศนิยมถ้ามี)
+            document.getElementById("totalWeight").textContent =
+                totalWeight.toLocaleString("en-US", { maximumFractionDigits: 2 }) + " kg";
+
             // อัพเดตเงินรวม
-            document.getElementById('totalAmount').textContent = formatNumber(totalPrice) + ' ₭';
+            document.getElementById("totalAmount").textContent =
+                formatNumber(totalPrice) + " ₭";
         }
 
         function deleteLastDigit() {
-            const el = document.getElementById('betNumber');
-            const raw = (el.value || '').replace(/,/g, '').slice(0, -1);
-            el.value = raw ? formatNumber(parseInt(raw, 10)) : '0';
+            const el = document.getElementById("betNumber");
+            let raw = (el.value || "").replace(/,/g, "");
+            raw = raw.slice(0, -1);
+            el.value = raw;
         }
 
         function showSaveModal() {
-            const modal = document.getElementById('saveModal');
-            const input = document.getElementById('customerNameInput');
-            
+            const modal = document.getElementById("saveModal");
+            const input = document.getElementById("customerNameInput");
+            const rows = document.querySelectorAll("#recordList .list-row");
+
+            // ตรวจสอบว่ามีข้อมูลหรือไม่
+            if (rows.length === 0) {
+                alert("ບໍ່ມີຂໍ້ມູນເພື່ອສະແດງ");
+                return;
+            }
+
             // โหลดประวัติจาก localStorage
-            const savedHistory = localStorage.getItem('customerHistory');
+            const savedHistory = localStorage.getItem("customerHistory");
             if (savedHistory) {
                 customerHistory = JSON.parse(savedHistory);
             }
-            
-            input.value = currentCustomerName || '';
-            modal.style.display = 'flex';
+
+            input.value = currentCustomerName || "";
+            modal.style.display = "flex";
             setTimeout(() => {
-                modal.classList.add('active');
+                modal.classList.add("active");
                 // โฟกัสที่ช่องกรอกชื่ออัตโนมัติ
                 input.focus();
             }, 10);
         }
 
         function closeModal() {
-            const modal = document.getElementById('saveModal');
-            modal.classList.remove('active');
-            setTimeout(() => modal.style.display = 'none', 200);
+            const modal = document.getElementById("saveModal");
+            modal.classList.remove("active");
+            setTimeout(() => (modal.style.display = "none"), 200);
         }
 
-        function viewDetails() {
-            const customerName = document.getElementById('customerNameInput').value.trim();
-            const rows = document.querySelectorAll('#recordList .list-row');
-            
+        // ฟังก์ชันหลัก: บันทึกข้อมูลและแสดงใบบิล
+        function confirmSaveAndShowDetails() {
+            const customerName = document
+                .getElementById("customerNameInput")
+                .value.trim();
+            const rows = document.querySelectorAll("#recordList .list-row");
+
+            if (!customerName) {
+                alert("ກະລຸນາໃສ່ຊື່ລູກຄ້າກ່ອນບັນທຶກ");
+                document.getElementById("customerNameInput").focus();
+                return;
+            }
+
+            // ตรวจสอบว่ามีข้อมูลหรือไม่
             if (rows.length === 0) {
-                alert('ບໍ່ມີຂໍ້ມູນເພື່ອສະແດງ');
+                alert("ບໍ່ມີຂໍ້ມູນເພື່ອສະແດງ");
                 return;
             }
-            
-            if (!customerName) {
-                alert('ກະລຸນາໃສ່ຊື່ລູກຄ້າ');
-                document.getElementById('customerNameInput').focus();
-                return;
-            }
-            
-            currentCustomerName = customerName;
-            document.getElementById('detailsCustomerName').innerText = customerName;
-            
-            let totalWeight = 0;
-            let totalPrice = 0;
-            const detailsTableBody = document.getElementById('detailsTableBody');
-            detailsTableBody.innerHTML = '';
-            
-            rows.forEach((r, i) => {
-                const weight = parseInt(r.dataset.weight || '0', 10);
-                const price = parseInt(r.dataset.price || '0', 10);
-                totalWeight += weight;
-                totalPrice += price;
-                
-                const newRow = detailsTableBody.insertRow();
-                newRow.insertCell(0).innerText = i + 1;
-                newRow.insertCell(1).innerText = formatNumber(weight) + ' kg';
-                newRow.insertCell(2).innerText = i + 1; // สำหรับคอลัมน์ที่ 3
-                newRow.insertCell(3).innerText = formatNumber(price) + ' ₭';
-            });
-            
-            document.getElementById('detailsTotalWeight').innerText = formatNumber(totalWeight) + ' kg';
-            document.getElementById('detailsTotalMoney').innerText = formatNumber(totalWeight) + ' kg × ' + rubberPricePerKg + ' = ' + formatNumber(totalPrice) + ' ₭';
-            
-            const today = new Date();
-            document.getElementById('detailsDate').innerText = 'ວັນທີ: ' + today.toLocaleDateString('lo-LA') + ' | ເວລາ: ' + today.toLocaleTimeString('lo-LA', { hour: '2-digit', minute: '2-digit' });
-            
-            closeModal();
-            const detailsModal = document.getElementById('detailsModal');
-            detailsModal.style.display = 'flex';
-            setTimeout(() => detailsModal.classList.add('active'), 10);
-        }
 
-        function closeDetailsModal() {
-            const detailsModal = document.getElementById('detailsModal');
-            detailsModal.classList.remove('active');
-            setTimeout(() => {
-                detailsModal.style.display = 'none';
-            }, 200);
-        }
-
-        function confirmSaveAll() {
-            const customerName = document.getElementById('customerNameInput').value.trim();
-            
-            if (!customerName) {
-                alert('ກະລຸນາໃສ່ຊື່ລູກຄ້າກ່ອນບັນທຶກ');
-                document.getElementById('customerNameInput').focus();
-                return;
-            }
-            
             // เพิ่มชื่อลูกค้าในประวัติถ้ายังไม่มี
             if (!customerHistory.includes(customerName)) {
                 customerHistory.push(customerName);
                 // บันทึกลง localStorage เพื่อคงข้อมูลไว้
-                localStorage.setItem('customerHistory', JSON.stringify(customerHistory));
+                localStorage.setItem(
+                    "customerHistory",
+                    JSON.stringify(customerHistory),
+                );
             }
-            
+
             currentCustomerName = customerName;
-            
-            // สามารถเพิ่มโค้ดบันทึกข้อมูลลงฐานข้อมูลหรือเซิร์ฟเวอร์ที่นี่
-            alert('ບັນທຶກຂໍ້ມູນຂອງ ' + customerName + ' ສຳເລັດແລ້ວ!');
-            
-            // รีเซ็ตข้อมูลหลังจากบันทึก
-            resetAllData();
+
+            // เตรียมข้อมูลสำหรับแสดงในใบบิล
+            prepareDetailsData(customerName, rows);
+
+            // ปิด modal บันทึก
             closeModal();
+
+            // แสดง modal ใบบิล
+            const detailsModal = document.getElementById("detailsModal");
+            detailsModal.style.display = "flex";
+            setTimeout(() => detailsModal.classList.add("active"), 10);
         }
 
+        // เตรียมข้อมูลสำหรับแสดงในใบบิล
+        function prepareDetailsData(customerName, rows) {
+            document.getElementById("detailsCustomerName").innerText =
+                customerName;
+
+            let totalWeight = 0;
+            let totalPrice = 0;
+            const detailsTableBody = document.getElementById("detailsTableBody");
+            detailsTableBody.innerHTML = "";
+
+            // 1. Extract data items
+            const items = [];
+            rows.forEach((r) => {
+                const weight = parseFloat(r.dataset.weight || "0");
+                const price = parseFloat(r.dataset.price || "0");
+                totalWeight += weight;
+                totalPrice += price;
+                items.push({
+                    weight,
+                    price
+                });
+            });
+
+            // 2. Determine total rows needed
+            // Each block of 10 rows can hold 20 items (10 left + 10 right)
+            // Minimum 10 rows
+            const totalBlocks = Math.ceil(Math.max(items.length, 1) / 20);
+            const rowCount = Math.max(10, totalBlocks * 10);
+
+            // 3. Render rows
+            for (let i = 0; i < rowCount; i++) {
+                const row = detailsTableBody.insertRow();
+                const blockIndex = Math.floor(i / 10);
+                const rowIndexInBlock = i % 10;
+
+                // Index of item for Left Column (0-9 in block)
+                const leftItemIndex = blockIndex * 20 + rowIndexInBlock;
+                // Index of item for Right Column (10-19 in block)
+                const rightItemIndex = blockIndex * 20 + 10 + rowIndexInBlock;
+
+                // Left Pair: Weight, Price
+                const cellWeight1 = row.insertCell(0);
+                const cellPrice1 = row.insertCell(1);
+                if (leftItemIndex < items.length) {
+                    cellWeight1.innerText = formatNumber(items[leftItemIndex].weight) + " kg";
+                    cellPrice1.innerText = formatNumber(items[leftItemIndex].price) + " ₭";
+                } else {
+                    cellWeight1.innerHTML = "&nbsp;";
+                    cellPrice1.innerHTML = "&nbsp;";
+                }
+
+                // Right Pair: Weight, Price
+                const cellWeight2 = row.insertCell(2);
+                const cellPrice2 = row.insertCell(3);
+                if (rightItemIndex < items.length) {
+                    cellWeight2.innerText = formatNumber(items[rightItemIndex].weight) + " kg";
+                    cellPrice2.innerText = formatNumber(items[rightItemIndex].price) + " ₭";
+                } else {
+                    cellWeight2.innerHTML = "&nbsp;";
+                    cellPrice2.innerHTML = "&nbsp;";
+                }
+            }
+
+            document.getElementById("detailsTotalWeight").innerText =
+                totalWeight.toLocaleString("en-US", { maximumFractionDigits: 2 }) + " kg";
+
+            // Header: Simple Price
+            document.getElementById("detailsSummaryPrice").innerText =
+                formatNumber(totalPrice) + " ₭";
+
+            // Calculate Split Totals
+            let leftTotalWeight = 0;
+            let leftTotalPrice = 0;
+            let rightTotalWeight = 0;
+            let rightTotalPrice = 0;
+
+            items.forEach((item, index) => {
+                const indexInBlock = index % 20;
+                if (indexInBlock < 10) {
+                    leftTotalWeight += item.weight;
+                    leftTotalPrice += item.price;
+                } else {
+                    rightTotalWeight += item.weight;
+                    rightTotalPrice += item.price;
+                }
+            });
+
+            // Add Summary Row (Raw Numbers Only)
+            const summaryRow = detailsTableBody.insertRow();
+            summaryRow.className = "summary-row";
+            summaryRow.insertCell(0).innerText = formatNumber(leftTotalWeight);
+            summaryRow.insertCell(1).innerText = formatNumber(leftTotalPrice);
+            summaryRow.insertCell(2).innerText = rightTotalWeight > 0 ? formatNumber(rightTotalWeight) : "-";
+            summaryRow.insertCell(3).innerText = rightTotalPrice > 0 ? formatNumber(rightTotalPrice) : "-";
+
+            // Footer: Detailed Price
+            document.getElementById("detailsTotalMoney").innerText =
+                totalWeight.toLocaleString("en-US", { maximumFractionDigits: 2 }) +
+                " kg × " +
+                rubberPricePerKg +
+                " = " +
+                formatNumber(totalPrice) +
+                " ₭";
+
+            const today = new Date();
+            const dateStr = today.toLocaleDateString("lo-LA");
+            const timeStr = today.toLocaleTimeString("lo-LA", {
+                hour: "2-digit",
+                minute: "2-digit",
+            });
+
+            document.getElementById("detailsDate").innerHTML =
+                `<span>ວັນທີ: ${dateStr}</span>` +
+                `<span>ເວລາ: ${timeStr}</span>`;
+        }
+
+        // ปิด modal ใบบิลและรีเซ็ตข้อมูล
+        function closeDetailsAndReset() {
+            const detailsModal = document.getElementById("detailsModal");
+            detailsModal.classList.remove("active");
+            setTimeout(() => {
+                detailsModal.style.display = "none";
+                // รีเซ็ตข้อมูลหลังจากปิดใบบิล
+                resetAllData();
+            }, 200);
+        }
+
+        // รีเซ็ตข้อมูลทั้งหมด
         function resetAllData() {
             // ล้างรายการน้ำหนักทั้งหมด
-            document.getElementById('recordList').innerHTML = '';
+            document.getElementById("recordList").innerHTML = "";
             listCount = 1;
             updateTotalAmount();
-            document.getElementById('betNumber').value = '';
-            document.getElementById('customerNameInput').value = '';
-            currentCustomerName = '';
+            document.getElementById("betNumber").value = "";
+            document.getElementById("customerNameInput").value = "";
+            currentCustomerName = "";
         }
 
         // ───────────── Settings Modal Functions ─────────────
         function openSettingsModal() {
-            const modal = document.getElementById('settingsModal');
-            document.getElementById('rubberPrice').value = rubberPricePerKg;
-            document.getElementById('currentPriceDisplay').innerText = rubberPricePerKg + ' ₭/kg';
-            modal.style.display = 'flex';
-            setTimeout(() => modal.classList.add('active'), 10);
+            const modal = document.getElementById("settingsModal");
+            document.getElementById("rubberPrice").value = rubberPricePerKg;
+            document.getElementById("currentPriceDisplay").innerText =
+                rubberPricePerKg + " ₭/kg";
+            modal.style.display = "flex";
+            setTimeout(() => modal.classList.add("active"), 10);
         }
 
         function closeSettingsModal() {
-            const modal = document.getElementById('settingsModal');
-            modal.classList.remove('active');
-            setTimeout(() => modal.style.display = 'none', 200);
+            const modal = document.getElementById("settingsModal");
+            modal.classList.remove("active");
+            setTimeout(() => (modal.style.display = "none"), 200);
         }
 
         function saveSettings() {
-            const priceInput = document.getElementById('rubberPrice');
+            const priceInput = document.getElementById("rubberPrice");
             const newPrice = parseFloat(priceInput.value) || 35;
-            
+
             // ตรวจสอบว่ามีการเปลี่ยนแปลงหรือไม่
             if (newPrice === rubberPricePerKg) {
-                alert('ราคายังเหมือนเดิม ไม่มีการเปลี่ยนแปลง');
+                alert("ราคายังเหมือนเดิม ไม่มีการเปลี่ยนแปลง");
                 return;
             }
-            
+
             rubberPricePerKg = newPrice;
-            
+
             // บันทึกลง localStorage
-            localStorage.setItem('rubberPrice', rubberPricePerKg);
-            
-            document.getElementById('currentPriceDisplay').innerText = rubberPricePerKg + ' ₭/kg';
-            alert('บันทึกราคายางพาราเรียบร้อย: ' + rubberPricePerKg + ' ₭/kg');
-            
+            localStorage.setItem("rubberPrice", rubberPricePerKg);
+
+            document.getElementById("currentPriceDisplay").innerText =
+                rubberPricePerKg + " ₭/kg";
+            alert(
+                "บันทึกราคายางพาราเรียบร้อย: " + rubberPricePerKg + " ₭/kg",
+            );
+
             // รีเฟรชข้อมูลที่แสดงผล
             refreshAllData();
-            
+
             closeSettingsModal();
         }
 
         // ฟังก์ชันรีเฟรชข้อมูลทั้งหมดเมื่อราคาเปลี่ยนแปลง
         function refreshAllData() {
             // อัพเดตราคาในรายการที่มีอยู่
-            document.querySelectorAll('#recordList .list-row').forEach(row => {
-                const weight = parseInt(row.dataset.weight || '0', 10);
-                const price = weight * rubberPricePerKg;
-                row.dataset.price = price;
-                row.querySelector('.col-value').textContent = formatNumber(price) + ' ₭';
-            });
-            
+            document
+                .querySelectorAll("#recordList .list-row")
+                .forEach((row) => {
+                    const weight = parseInt(row.dataset.weight || "0", 10);
+                    const price = weight * rubberPricePerKg;
+                    row.dataset.price = price;
+                    row.querySelector(".col-value").textContent =
+                        formatNumber(price) + " ₭";
+                });
+
             // อัพเดตยอดรวม
             updateTotalAmount();
         }
@@ -1586,32 +1848,34 @@
 
         function selectNumber(btn, number) {
             // Remove active class from all number buttons
-            document.querySelectorAll('.number-btn').forEach(b => {
-                b.classList.remove('active');
+            document.querySelectorAll(".number-btn").forEach((b) => {
+                b.classList.remove("active");
             });
-            
+
             // Add active class to clicked button
-            btn.classList.add('active');
-            
+            btn.classList.add("active");
+
             // Add the number to the weight input field
-            const weightInput = document.getElementById('weight');
+            const weightInput = document.getElementById("weight");
             weightInput.value += number;
             weightInput.focus();
         }
 
         // เพิ่ม Event Listener สำหรับกด Enter ในช่องกรอกชื่อ
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener("DOMContentLoaded", function () {
             loadSettings();
-            
-            const customerInput = document.getElementById('customerNameInput');
+
+            const customerInput =
+                document.getElementById("customerNameInput");
             if (customerInput) {
-                customerInput.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        confirmSaveAll();
+                customerInput.addEventListener("keypress", function (e) {
+                    if (e.key === "Enter") {
+                        confirmSaveAndShowDetails();
                     }
                 });
             }
         });
     </script>
 </body>
+
 </html>
